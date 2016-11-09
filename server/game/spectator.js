@@ -4,6 +4,6 @@ class Spectator {
         this.name = name;
 
         this.buttons = [];
-        this.menuTitle = "Specator mode";
+        this.menuTitle = "Spectator mode";
     }
 }

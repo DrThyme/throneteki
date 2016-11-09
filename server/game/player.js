@@ -13,7 +13,6 @@ class Player extends Spectator {
         this.hand = [];
 
         this.owner = owner;
-        this.spectator = false;
         this.takenMulligan = false;
     }
 
