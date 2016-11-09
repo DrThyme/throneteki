@@ -1,17 +1,19 @@
 const _ = require('underscore');
 const uuid = require('node-uuid');
 
-class Player {
+const Spectator = require('./spectator.js');
+
+class Player extends Spectator {
     constructor(id, name, owner) {
+        super(id, name);
+
         this.drawCards = [];
         this.plotCards = [];
         this.drawDeck = [];
         this.hand = [];
 
-        this.id = id;
-        this.name = name;
         this.owner = owner;
-
+        this.spectator = false;
         this.takenMulligan = false;
     }
 
@@ -76,7 +78,7 @@ class Player {
 
     mulligan() {
         if (this.takenMulligan) {
-            return;
+            return false;
         }
 
         this.initDrawDeck();
@@ -86,6 +88,8 @@ class Player {
         this.menuTitle = 'Waiting for opponent to keep hand or mulligan';
 
         this.readyToStart = true;
+
+        return true;
     }
 
     keep() {
